@@ -14,4 +14,3 @@ virtualmachines:
       - policycoreutils-python
     networks:
       - default
-      - secondary
