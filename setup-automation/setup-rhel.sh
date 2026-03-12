@@ -34,6 +34,4 @@ EOF
 
 chcon -t default_t -R /var/www/html
 chown -R 1002:1002 /var/www/html
-
-dnf -y install httpd
 systemctl enable --now httpd

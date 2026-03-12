@@ -6,18 +6,16 @@ antora:
   modules:
     - name: module-01
       label: "Writing your lab"
-      solveButton: true
+      solveButton: false
     - name: module-02
       label: "Antora"
-      solveButton: true
+      solveButton: false
     - name: module-03
       label: "Tabs"
+      solveButton: false
 
 tabs:
   - name: ">_ terminal"
     url: /wetty
   - name: "Web Browser"
     url: http://${giud}.${domain}
-    modules:
-      - module-02
-      - module-03
