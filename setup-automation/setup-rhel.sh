@@ -32,6 +32,6 @@ Without it, we have no business!<br>
 </html>
 EOF
 
+systemctl enable --now httpd
 chcon -t default_t -R /var/www/html
 chown -R 1002:1002 /var/www/html
-systemctl enable --now httpd
