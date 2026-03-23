@@ -7,7 +7,7 @@ The server runs Apache's HTTPD, and we've just restored it from a backup after a
 The web site was restored to `/var/www/html` and `httpd` was installed and started, but the web site isn't coming up when we view it in the tab labelled `Web Site`. 
 
 == Diagnose the problem
-If you view the `Web Site` tab, you should see that instead of displaying the desired web site, all you see is the base "It Worked" template the comes with Apache when you install it on RHEL. 
+If you view the `Web Site` tab, you should see that instead of displaying the desired web site, all you see is the base "It Worked" template that comes with Apache when you install it on RHEL. 
 
 === Common Causes for this issue
 This template is actually not a site that is in place in the web root of `httpd` when it is installed on RHEL, rather it is displayed in place of the error pages in `httpd`.  When you see this page, it means that `httpd` couldn't find a better page to serve, and so it is displaying its default page. 
@@ -31,7 +31,10 @@ You could open the configration file, and search for `DocumentRoot`, but for our
 sudo grep '^DocumentRoot' /etc/httpd/conf/httpd.conf
 ----
 
->Note: the pattern `'^DocumentRoot'` asks `grep` to only return lines that start with the word `DocumentRoot`
+[Note:]
+----
+The pattern `'^DocumentRoot'` asks `grep` to only return lines that start with the word `DocumentRoot`
+----
 
 The above command reveals that the `DocumentRoot` for his web server is /var/www/html. 
 
@@ -104,12 +107,11 @@ Permissions are a very common, but usually simple, and sometimes easy to overloo
 
 [source,bash,role="executable",subs=attributes+]
 ----
-ps aux | grep httpd
+ps aux | grep [h]ttpd
 ----
 
 You will see one `httpd` process owned by `root`, and at least one owned by `apache`. 
 
-You can ignore the grep that also shows in the output.
 [source,subs=attributes+]
 ----
 [rhel@rhel ~]$ ps aux | grep httpd
@@ -118,7 +120,6 @@ apache     15389  0.0  0.1  19184  5640 ?        S    18:37   0:00 /usr/sbin/htt
 apache     15390  0.0  0.2 904440  7364 ?        Sl   18:37   0:00 /usr/sbin/httpd -DFOREGROUND
 apache     15391  0.0  0.2 773304  8252 ?        Sl   18:37   0:00 /usr/sbin/httpd -DFOREGROUND
 apache     15408  0.0  0.2 773304  7216 ?        Sl   18:37   0:00 /usr/sbin/httpd -DFOREGROUND
-rhel      126354  0.0  0.0   3848  1820 pts/0    S+   19:27   0:00 grep --color=auto httpd
 [rhel@rhel ~]$ 
 ----
 
