@@ -25,4 +25,5 @@ virtualmachines:
         host: rhel-http
         service: rhel-http
         targetPort: 80
-        tls: false
+        tls: true
+        tls_termination: Edge
