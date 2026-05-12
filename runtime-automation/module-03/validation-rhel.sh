@@ -12,7 +12,7 @@ if [ "$OWNER" != "root:root" ]; then
 fi
 
 # Check 2: Verify SELinux context is correct
-SELINUX_CONTEXT=$(ls -Zd /var/www/html | awk '{print $4}' | cut -d: -f3)
+SELINUX_CONTEXT=$(ls -Zd /var/www/html | awk '{print $1}' | cut -d: -f3)
 if [ "$SELINUX_CONTEXT" != "httpd_sys_content_t" ]; then
     echo "FAIL: /var/www/html SELinux context is $SELINUX_CONTEXT, should be httpd_sys_content_t" >> /tmp/progress.log
     echo "HINT: Use 'sudo restorecon -vFR /var/www/' to restore correct SELinux contexts" >> /tmp/progress.log
